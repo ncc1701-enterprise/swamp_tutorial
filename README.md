@@ -48,11 +48,14 @@ Now we install nano: a simple commandline text editor that works well with putty
 
 Again we will install software, now the gcc compiler and some libraries that are needed to compile nginx.
 
-```apt-get install gcc make build-essential libpcre3 libpcre3-dev libc6 libssl-dev zlib1g zlib1g-dev lsb-base openssl -y```
+```
+apt-get install gcc make build-essential libpcre3 libpcre3-dev libc6 libssl-dev zlib1g zlib1g-dev lsb-base openssl -y
+```
 
 We're now ready to download nginx and the rtmp module, which is the piece of software that we're actually interested in. But before that we create a new directory called "nginx_temp" and move into it.
 
-```mkdir nginx_temp
+```
+mkdir nginx_temp
 cd nginx_temp
 wget http://nginx.org/download/nginx-1.13.9.tar.gz
 wget https://github.com/arut/nginx-rtmp-module/archive/master.zip
@@ -64,7 +67,8 @@ rm master.zip
 
 Now that we've downloaded anything, we need to compile nginx. Luckily developers include a script that does most of the work for us by default.
 
-```cd nginx-1.13.9
+```
+cd nginx-1.13.9
 ./configure --with-http_ssl_module --add-module=../nginx-rtmp-module-master
 make
 make install
@@ -78,7 +82,7 @@ _nano quick start guide: use CTRL+C then y then RETURN to close and save changes
 
 `nano /usr/local/nginx/conf/nginx.conf`
 
-Now use CTRL+V to scroll to the bottom and paste the following at the end of file:
+Now use CTRL+V to scroll to the bottom and paste the following at the end of file, close and save like described above.
 
 ```
 rtmp {
@@ -93,3 +97,16 @@ rtmp {
         }
 }
 ```
+
+Now restart nginx to load your new configuration
+
+```
+/usr/local/nginx/sbin/nginx -s stop
+/usr/local/nginx/sbin/nginx
+```
+
+We're finished with the server now. You can type htop and press enter to watch the cpu load while you test the stream.
+
+## setting up your source with Open Broadcaster
+
+TODO
