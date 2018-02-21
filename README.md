@@ -48,11 +48,9 @@ Now we install nano: a simple commandline text editor that works well with putty
 
 Again we will install software, now the gcc compiler and some libraries that are needed to compile nginx.
 
-```
-apt-get install gcc make build-essential libpcre3 libpcre3-dev libc6 libssl-dev zlib1g zlib1g-dev lsb-base openssl -y
-```
+```apt-get install gcc make build-essential libpcre3 libpcre3-dev libc6 libssl-dev zlib1g zlib1g-dev lsb-base openssl -y```
 
-We're now ready to download nginx and the rtmp module, which is the piece of software that we're actually interested in. But before that we create a new directory called "nginx_temp" and move into it.
+We're now ready to download nginx and the rtmp module, which is the piece of software that we're actually interested in. Before that we create a new directory called "nginx_temp" and move into it.
 
 ```
 mkdir nginx_temp
@@ -67,8 +65,7 @@ rm master.zip
 
 Now that we've downloaded anything, we need to compile nginx. Luckily developers include a script that does most of the work for us by default.
 
-```
-cd nginx-1.13.9
+```cd nginx-1.13.9
 ./configure --with-http_ssl_module --add-module=../nginx-rtmp-module-master
 make
 make install
@@ -106,7 +103,15 @@ Now restart nginx to load your new configuration
 ```
 
 We're finished with the server now. You can type htop and press enter to watch the cpu load while you test the stream.
+You need to edit the following link to fit your servers IP adress, then you can paste it in the chat while standing in a cinema to add your stream to the queue.
+
+`rtmp://<server ip>:1935/live/test`
 
 ## setting up your source with Open Broadcaster
 
-TODO
+In your OBS paste the following under 'stream' in settings
+
+```
+URL: rtmp://<server ip>:1935/live
+key: test
+```
