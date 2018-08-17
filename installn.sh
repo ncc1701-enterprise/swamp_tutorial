@@ -16,7 +16,7 @@ tar xfv /tmp/nginx_rtmp_tmp/nginx.tar
 unzip /tmp/nginx_rtmp_tmp/master.zip
 rm -R /tmp/nginx_rtmp_tmp
 
-# compile nginx source with rtmp module and install afterwards
+# compile nginx source with rtmp module and install afterward
 cd nginx-1.15.2
 ./configure --with-http_ssl_module --add-module=../nginx-rtmp-module-master
 make -j 2
