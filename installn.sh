@@ -8,7 +8,7 @@ apt-get install nano htop unzip gcc make build-essential libpcre3 libpcre3-dev l
 
 # downloading nginx source and rtmp module
 mkdir /tmp/nginx_rtmp_tmp
-wget -O /tmp/nginx_rtmp_tmp/nginx.tar http://nginx.org/download/nginx-1.15.2.tar.gz
+wget -O /tmp/nginx_rtmp_tmp/nginx.tar http://nginx.org/download/nginx-1.16.1.tar.gz
 wget -O /tmp/nginx_rtmp_tmp/master.zip https://github.com/arut/nginx-rtmp-module/archive/master.zip
 
 # extracting the downloads to current directory and deleting the temp files
@@ -17,7 +17,7 @@ unzip /tmp/nginx_rtmp_tmp/master.zip
 rm -R /tmp/nginx_rtmp_tmp
 
 # compile nginx source with rtmp module and install afterward
-cd nginx-1.15.2
+cd nginx-1.16.1
 ./configure --with-http_ssl_module --add-module=../nginx-rtmp-module-master
 make -j 2
 make install
